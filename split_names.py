@@ -3,6 +3,8 @@ import pandas as pd
 # Load the data #
 df = pd.read_excel('input_names.xlsx')
 
+df = df.replace(r'\n', ' ', regex=True)
+
 #print(df['Name'])
 
 
@@ -10,7 +12,7 @@ def add_name(or_nm):
     if len(or_nm)>40:
         split_=or_nm.rfind(" ",0,40)
         if split_!=-1:
-            return or_nm[split_:]
+            return or_nm[split_:].strip()
         else:
             return ("N/A")
 
@@ -19,9 +21,11 @@ def short_name(or_nm):
     if len(or_nm)>40:
         split2=or_nm.rfind(" ",0,40)
         if split2!=-1:
-            return or_nm[:split2]
+            return or_nm[:split2].strip()
         else:
-            return ("N/A")
+            return ("#N/A")
+    else:
+        return (or_nm)
 
 original_name=[nm for nm in df['Name']]
 additional_names=[add_name(nm) for nm in df['Name']]

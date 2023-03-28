@@ -128,7 +128,7 @@ options = webdriver.firefox.options.Options()
 options.set_preference('intl.accept_languages', 'en-GB')
 
 
-options.add_argument("-headless") # headles option can be disabled for tracking and debugging
+#options.add_argument("-headless") # headles option can be disabled for tracking and debugging
 
 driver = webdriver.Firefox(options=options, service=ser)
 
